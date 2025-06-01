@@ -18,6 +18,5 @@ services:
       retries: 5
 
 volumes:
-  postgres_db:
-    driver: local
   postgres_data:
+    driver: local
