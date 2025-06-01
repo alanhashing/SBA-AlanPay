@@ -2,12 +2,12 @@ from datetime import datetime, timezone
 from typing import Optional, TYPE_CHECKING, Annotated
 from decimal import Decimal
 from sqlmodel import SQLModel, Field, Relationship
-from pydantic import condecimal
+from pydantic import Field as PydanticField
 
 if TYPE_CHECKING:
     from .user import User
 
-MoneyDecimal = Annotated[Decimal, condecimal(max_digits=18, decimal_places=2)]
+MoneyDecimal = Annotated[Decimal, PydanticField(max_digits=18, decimal_places=2)]
 
 class BalanceBase(SQLModel):
     amount: MoneyDecimal = Field(default=Decimal('0.00'))
